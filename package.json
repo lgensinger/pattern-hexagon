@@ -1,6 +1,6 @@
 {
   "name": "@lgv/pattern-hexagon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "ES6 d3.js svg hexagon pattern.",
   "main": "src/index.js",

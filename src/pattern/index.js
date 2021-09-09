@@ -57,8 +57,8 @@ class HexagonPattern {
         ];
 
         let middle = [
-            `translate(${this.widthHexagon / 2}, ${this.radius * 1.5})`,
-            `translate(${this.widthHexagon * 1.5}, ${this.radius * 1.5})`
+            `translate(${this.widthHexagon / 2}, ${this.radiusHexagon * 1.5})`,
+            `translate(${this.widthHexagon * 1.5}, ${this.radiusHexagon * 1.5})`
         ];
 
         let bottom = [
@@ -80,7 +80,7 @@ class HexagonPattern {
         this.widthHexagon = this.unit * 0.5;
         this.heightHexagon = this.widthHexagon / 0.8660254;
         this.radiusHexagon = this.heightHexagon / 2;
-        this.height = this.radius * 3;
+        this.height = this.radiusHexagon * 3;
 
     }
 
@@ -91,18 +91,18 @@ class HexagonPattern {
     get points() {
 
         // polygon points in clockwise order starting at the top point
-        let p1 = [0,-this.radius];
+        let p1 = [0,-this.radiusHexagon];
         let p2 = [
-            this.radius * Math.cos(degreesToRadians(30)),
-            -(this.radius * Math.sin(degreesToRadians(30)))
+            this.radiusHexagon * Math.cos(degreesToRadians(30)),
+            -(this.radiusHexagon * Math.sin(degreesToRadians(30)))
         ];
-        let p3 = [p2[0], p2[1] + this.radius];
-        let p4 = [0,this.radius];
+        let p3 = [p2[0], p2[1] + this.radiusHexagon];
+        let p4 = [0,this.radiusHexagon];
         let p5 = [
-            (this.radius * Math.sin(degreesToRadians(240))),
-            -this.radius * Math.cos(degreesToRadians(240))
+            (this.radiusHexagon * Math.sin(degreesToRadians(240))),
+            -this.radiusHexagon * Math.cos(degreesToRadians(240))
         ];
-        let p6 = [p5[0], p5[1] - this.radius];
+        let p6 = [p5[0], p5[1] - this.radiusHexagon];
 
         // generate list of points in hexagon
         let points = [p1,p2,p3,p4,p5,p6].map(d => d.join(","));
