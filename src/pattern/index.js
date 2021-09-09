@@ -26,7 +26,7 @@ class HexagonPattern {
         this.unit = unit;
         this.widthHexagon = null;
 
-        // if unit is undefined use a cell size of 1 font size unit
+        // if unit is undefined use a swatch size of 1 font size unit
 
         if (!unit) {
 
@@ -37,6 +37,7 @@ class HexagonPattern {
 
         // calculate hexagon shape + pattern dimensions
         this.dimensions;
+        this.svgPath = this.points;
 
     }
 
@@ -84,9 +85,10 @@ class HexagonPattern {
     }
 
     /**
-     * Determine the coordinates of hexagon shapes inside the pattern grid.
+     * Determine the coordinates of hexagon shape.
+     * @returns A string representing a hexagon described by the svg path value to render it.
      */
-    get shapes() {
+    get points() {
 
         // polygon points in clockwise order starting at the top point
         let p1 = [0,-this.radius];
@@ -106,7 +108,7 @@ class HexagonPattern {
         let points = [p1,p2,p3,p4,p5,p6].map(d => d.join(","));
 
         // construct the svg path d value
-        this.svgPath = points.join(" ");
+        return points.join(" ");
 
     }
 

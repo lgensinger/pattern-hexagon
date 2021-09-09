@@ -35,12 +35,12 @@ test("get_dimension", t => {
 
 });
 
-// TEST get SHAPES //
-test("get_shapes", t => {
+// TEST get POINTS //
+test("get_points", t => {
 
-    hp.shapes;
+    let path = hp.points;
 
-    t.true(hp.svgPath != null);
+    t.true(typeof(path) == "string");
 
 });
 
@@ -107,12 +107,12 @@ test("get_dimension_params", t => {
 
 });
 
-// TEST get SHAPES //
-test("get_shapes_parms", t => {
+// TEST get POINTS //
+test("get_points_parms", t => {
 
-    hpp.shapes;
+    let path = hpp.points;
 
-    t.true(hpp.svgPath != null);
+    t.true(typeof(path) == "string");
 
 });
 

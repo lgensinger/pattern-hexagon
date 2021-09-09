@@ -28,11 +28,11 @@ import { HexagonPattern } from "@lgv/pattern-hexagon";
 const hp = new HexagonPattern();
 
 // generate svg artboard
-let tag = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-tag.setAttributeNS(null, "id", "artboard");
-tag.setAttributeNS(null, "width", 100);
-tag.setAttributeNS(null, "height", 100);
-document.body.appendChild(tag);
+let artboard = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+artboard.setAttributeNS(null, "id", "artboard");
+artboard.setAttributeNS(null, "width", 100);
+artboard.setAttributeNS(null, "height", 100);
+document.body.appendChild(artboard);
 
 // generate pattern in svg
 hp.generate(artboard, "my-pattern");
@@ -42,7 +42,7 @@ hp.generate(artboard, "my-pattern");
 
 ```css
 // style the hexagons
-#my-pattern hexagon {
+#my-pattern polygon {
 
     fill: red;
     stroke: blue;
@@ -64,11 +64,11 @@ hp.generate(artboard, "my-pattern");
 // assume the svg element already exists (let artboard) from above code for using the module
 
 // generate svg shape
-let tag = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-tag.setAttributeNS(null, "x", 0);
-tag.setAttributeNS(null, "y", 0);
-tag.setAttributeNS(null, "width", 50);
-tag.setAttributeNS(null, "height", 50);
-tag.setAttributeNS(null, "fill", "url(#my-pattern)");
-artboard.appendChild(tag);
+let rectangle = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+rectangle.setAttributeNS(null, "x", 0);
+rectangle.setAttributeNS(null, "y", 0);
+rectangle.setAttributeNS(null, "width", 50);
+rectangle.setAttributeNS(null, "height", 50);
+rectangle.setAttributeNS(null, "fill", "url(#my-pattern)");
+artboard.appendChild(rectangle);
 ```
