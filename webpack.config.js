@@ -21,10 +21,7 @@ const webpackConfig = {
         }),
         new webpack.DefinePlugin({
             "process.env": {
-                "DIMENSION_HEIGHT": JSON.stringify(process.DIMENSION_HEIGHT),
-                "DIMENSION_WIDTH": JSON.stringify(process.DIMENSION_WIDTH),
-                "LAYOUT_PADDING_CIRCLES": JSON.stringify(process.LAYOUT_PADDING_CIRCLES),
-                "PARSE_DELIMETER": JSON.stringify(process.PARSE_DELIMETER)
+                "DIMENSION_UNIT": JSON.stringify(process.DIMENSION_UNIT)
             }
         })
     ],
