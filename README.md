@@ -1,6 +1,6 @@
 # Pattern Hexagon
 
-ES6 d3.js svg hexagon pattern.
+ES6 svg hexagon pattern.
 
 ## Environment Variables
 
