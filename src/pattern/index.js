@@ -21,6 +21,7 @@ class HexagonPattern {
         // update self
         this.height = null;
         this.heightHexagon = null;
+        this.pattern = null;
         this.radiusHexagon = null;
         this.svgPath = null;
         this.unit = unit;
@@ -113,6 +114,23 @@ class HexagonPattern {
     }
 
     /**
+     * Generate polygon in pattern.
+     * @param {array} points - strings where each is a hexagon transform
+     */
+    hexagon(points) {
+
+        // generate shapes
+        this.pattern
+            .selectAll("polygon")
+            .data(points)
+            .enter()
+            .append("polygon")
+            .attr("transform", d => d)
+            .attr("points", this.svgPath);
+
+    }
+
+    /**
      * Generate an SVG hexagon tessellation.
      * @param {domNode} artboard - svg dom element
      * @param {string} id - pattern id
@@ -120,7 +138,7 @@ class HexagonPattern {
     generate(artboard, id) {
 
         // add pattern element
-        let pattern = select(artboard)
+        this.pattern = select(artboard)
             .append("pattern")
             .attr("id", id)
             .attr("x", 0)
@@ -130,20 +148,14 @@ class HexagonPattern {
             .attr("patternUnits", "userSpaceOnUse");
 
         // background
-        pattern.append("rect")
+        this.pattern.append("rect")
             .attr("x", 0)
             .attr("y", 0)
             .attr("width", this.unit)
             .attr("height", this.height);
 
-        // generate shapes
-        pattern
-            .selectAll("polygon")
-            .data(this.data)
-            .enter()
-            .append("polygon")
-            .attr("transform", d => d)
-            .attr("points", this.svgPath);
+        // generate hexagons
+        this.hexagon(this.data);
 
     }
 
