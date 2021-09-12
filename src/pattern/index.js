@@ -19,6 +19,7 @@ class HexagonPattern {
     constructor(unit=configurationDimension.unit) {
 
         // update self
+        this.className = null;
         this.height = null;
         this.heightHexagon = null;
         this.pattern = null;
@@ -121,10 +122,11 @@ class HexagonPattern {
 
         // generate shapes
         this.pattern
-            .selectAll("polygon")
+            .selectAll(`.${this.className}`)
             .data(points)
             .enter()
             .append("polygon")
+            .attr("class", this.className)
             .attr("transform", d => d)
             .attr("points", this.svgPath);
 
@@ -133,9 +135,10 @@ class HexagonPattern {
     /**
      * Generate an SVG hexagon tessellation.
      * @param {domNode} artboard - svg dom element
+     * @param {string} className - individual polygon class
      * @param {string} id - pattern id
      */
-    generate(artboard, id) {
+    generate(artboard, id, className="hexagon") {
 
         // add pattern element
         this.pattern = select(artboard)
@@ -153,6 +156,9 @@ class HexagonPattern {
             .attr("y", 0)
             .attr("width", this.unit)
             .attr("height", this.height);
+
+        // update self
+        this.className = className;
 
         // generate hexagons
         this.hexagon(this.data);
